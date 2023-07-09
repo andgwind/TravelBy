@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Models\Travel;
 use App\Http\Requests\StoreTravelRequest;
 use App\Http\Requests\UpdateTravelRequest;
+use App\Http\Resources\V1\TravelCollection;
 
 class TravelController extends Controller
 {
@@ -13,7 +15,9 @@ class TravelController extends Controller
      */
     public function index()
     {
-        //
+        $travel = Travel::where('is_public', true)->paginate();
+
+        return new TravelCollection($travel);
     }
 
     /**

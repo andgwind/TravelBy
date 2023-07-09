@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Tour;
-use App\Http\Requests\StoreTourRequest;
-use App\Http\Requests\UpdateTourRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Role;
+use App\Http\Requests\StoreRoleRequest;
+use App\Http\Requests\UpdateRoleRequest;
 
-class TourController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +20,7 @@ class TourController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTourRequest $request)
+    public function store(StoreRoleRequest $request)
     {
         //
     }
@@ -27,7 +28,7 @@ class TourController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tour $tour)
+    public function show(Role $role)
     {
         //
     }
@@ -35,7 +36,7 @@ class TourController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTourRequest $request, Tour $tour)
+    public function update(UpdateRoleRequest $request, Role $role)
     {
         //
     }
@@ -43,7 +44,7 @@ class TourController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tour $tour)
+    public function destroy(Role $role)
     {
         //
     }
