@@ -15,9 +15,11 @@ class TravelFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
+    {   
+        $isPublic = $this->faker->randomElement([true, false]);
+
         return [
-            'is_public' => fake()->boolean(),
+            'is_public' => $isPublic,
             'name' => fake()->text(25),
             'description' => fake()->text(100),
             'number_of_days' => rand(1, 20),

@@ -6,15 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Models\Tour;
 use App\Http\Requests\StoreTourRequest;
 use App\Http\Requests\UpdateTourRequest;
+use App\Http\Resources\V1\TourCollection;
+use App\Http\Resources\V1\TravelCollection;
+use App\Models\Travel;
 
 class TourController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Travel $travel)
     {
-        //
+        $tour = Tour::where('travel_id', $travel->id)
+            ->orderBy('starting_date')
+            ->paginate();
+        return new TourCollection($tour);
     }
 
     /**
