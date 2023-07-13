@@ -4,18 +4,19 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Travel;
-use App\Http\Requests\StoreTravelRequest;
-use App\Http\Requests\UpdateTravelRequest;
+use App\Http\Requests\V1\StoreTravelRequest;
+use App\Http\Requests\V1\UpdateTravelRequest;
 use App\Http\Resources\V1\TravelCollection;
+use App\Services\Api\V1\TravelService;
 
 class TravelController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(TravelService $travelService)
     {
-        $travel = Travel::where('is_public', true)->paginate();
+        $travel = $travelService->getPublicTravelsPaginated();
 
         return new TravelCollection($travel);
     }
