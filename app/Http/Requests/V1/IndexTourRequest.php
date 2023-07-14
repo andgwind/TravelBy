@@ -27,16 +27,22 @@ class IndexTourRequest extends FormRequest
             'priceTo' => 'numeric',
             'dateFrom' => 'date',
             'dateTo' => 'date',
-            'sortBy' => Rule::in(['price']),
-            'sortOrder' => Rule::in(['asc', 'desc']),
+            'sortBy' => [
+                'required_with:sortOrder',
+                Rule::in(['price']),
+            ],
+            'sortOrder' =>[
+                'required_with:sortBy',
+                Rule::in(['asc', 'desc']),
+            ],
         ];
     }
 
-    public function messages(): array
-    {
-        return [
-            'sortBy' => 'The SortBy parameter accepts only price value',
-            'sortOrder' => 'The SortOrder parameter accepts only price value',
-        ];
-    }
+    // public function messages(): array
+    // {
+    //     return [
+    //         'sortBy' => 'The SortBy parameter accepts only price value',
+    //         'sortOrder' => 'The SortOrder parameter accepts only price value',
+    //     ];
+    // }
 }
