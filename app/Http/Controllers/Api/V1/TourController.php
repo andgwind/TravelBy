@@ -18,8 +18,7 @@ class TourController extends Controller
      * Display a listing of the resource.
      */
     public function index(IndexTourRequest $request, TourService $tourService, Travel $travel)
-    {
-        
+    { 
         $filters = $request->query();
         $tours = $tourService->getTourByTravelSlug($travel->id, $filters);
         return new TourCollection($tours);
