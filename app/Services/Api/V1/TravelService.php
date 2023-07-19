@@ -16,4 +16,9 @@ class TravelService
     public function getPublicTravelsPaginated($perPage = 15) {
         return $this->travelRepository->getPublicTravelsPaginated($perPage);
     }
+
+    public function store(array $travel)
+    {
+        return $this->travelRepository->store($travel);
+    }
 }

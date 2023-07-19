@@ -3,8 +3,9 @@
 namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
-class StoreTravelRequest extends FormRequest
+class RegisterAuthRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,18 +23,9 @@ class StoreTravelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'isPublic' => 'boolean',
-            'name' => 'required|unique:travels',
-            'description' => 'required',
-            'numberOfDays' => 'required|integer'
+            'name' => 'string|max:50',
+            'email' => 'required|email|unique:users',
+            'password' => ['required', Password::min(8)]
         ];
-    }
-
-    protected function prepareForValidation() 
-    {
-        $this->merge([
-            'is_public' => $this->isPublic,
-            'number_of_days' => $this->numberOfDays
-        ]);
     }
 }

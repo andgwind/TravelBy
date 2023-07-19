@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\TourController;
 use App\Http\Controllers\Api\V1\TravelController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,8 +24,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller(TravelController::class)->prefix('v1')->group(function() {
     Route::get('/travels', 'index');
+    Route::post('admin/travels', 'store');
 });
 
 Route::controller(TourController::class)->prefix('v1')->group(function() {
     Route::get('/travels/{travel:slug}/tours', 'index');
+});
+
+Route::controller(AuthController::class)->prefix('v1')->group(function() {
+    Route::post('/register', 'register');
+    Route::post('/login', 'login');
 });

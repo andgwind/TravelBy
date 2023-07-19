@@ -10,4 +10,9 @@ class TravelRepository
     {
         return Travel::where('is_public', true)->paginate($perPage);
     }
+
+    public function store(array $travel) 
+    {
+        return Travel::create($travel);
+    }
 }
