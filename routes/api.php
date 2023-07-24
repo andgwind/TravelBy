@@ -24,11 +24,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller(TravelController::class)->prefix('v1')->group(function() {
     Route::get('/travels', 'index');
-    Route::post('admin/travels', 'store');
+    Route::middleware(['auth:sanctum', 'role:admin'])->post('/travels', 'store');
 });
 
 Route::controller(TourController::class)->prefix('v1')->group(function() {
     Route::get('/travels/{travel:slug}/tours', 'index');
+    Route::middleware(['auth:sanctum', 'role:admin'])->post('/travels/{travel}/tours', 'store');
 });
 
 Route::controller(AuthController::class)->prefix('v1')->group(function() {

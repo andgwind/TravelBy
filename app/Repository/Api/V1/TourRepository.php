@@ -4,6 +4,7 @@ namespace App\Repository\Api\V1;
 
 use App\Filter\V1\TourFilter;
 use App\Models\Tour;
+use App\Models\Travel;
 
 class TourRepository
 {
@@ -23,6 +24,13 @@ class TourRepository
             ->paginate($perPage);
 
         return $query;
+    }
+
+    public function store(array $tourData, Travel $travel)
+    {
+        
+        $tour = $travel->tours()->create($tourData);
+        return $tour;
     }
 
 }

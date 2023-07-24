@@ -11,7 +11,7 @@ class StoreTourRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,18 @@ class StoreTourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:250'],
+            'startingDate' => ['required', 'date'],
+            'endingDate' => ['required', 'date'],
+            'price' => ['required', 'numeric']
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'starting_date' => $this->startingDate,
+            'ending_date' => $this->endingDate,
+        ]);
     }
 }

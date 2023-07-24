@@ -2,6 +2,7 @@
 
 namespace App\Services\Api\V1;
 
+use App\Models\Travel;
 use App\Repository\Api\V1;
 use App\Repository\Api\V1\TourRepository;
 
@@ -20,5 +21,10 @@ class TourService
         int $perPage = 15) 
     {
         return $this->tourRepository->getTourByTravelSlug($travelId, $filters, $perPage);
+    }
+
+    public function store(array $tourData, Travel $travel)
+    {
+        return $this->tourRepository->store($tourData, $travel);
     }
 }
