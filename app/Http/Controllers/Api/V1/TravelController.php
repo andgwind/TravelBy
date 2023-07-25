@@ -53,7 +53,9 @@ class TravelController extends Controller
      */
     public function update(UpdateTravelRequest $request, Travel $travel)
     {
-        //
+        $updateTravel = $this->travelService->update($travel, $request->except(['isPublic', 'numberOfDays']));
+
+        return new TravelResource($updateTravel);
     }
 
     /**

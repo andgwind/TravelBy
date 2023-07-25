@@ -11,7 +11,7 @@ class UpdateTravelRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,18 @@ class UpdateTravelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'isPublic' => 'required|boolean',
+            'name' => 'required|string|unique:travels',
+            'description' => 'string',
+            'numberOfDays' => 'integer'
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'is_public' => $this->isPublic,
+            'number_of_days' => $this->numberOfDays
+        ]);
     }
 }

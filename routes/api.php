@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(TravelController::class)->prefix('v1')->group(function() {
     Route::get('/travels', 'index');
     Route::middleware(['auth:sanctum', 'role:admin'])->post('/travels', 'store');
+    Route::middleware(['auth:sanctum', 'role:editor'])->put('/travels/{travel}', 'update');
 });
 
 Route::controller(TourController::class)->prefix('v1')->group(function() {

@@ -15,4 +15,10 @@ class TravelRepository
     {
         return Travel::create($travel);
     }
+
+    public function update(Travel $travel, array $newTravel)
+    {
+        $travel->update($newTravel);
+        return $travel;
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Services\Api\V1;
 
+use App\Models\Travel;
 use App\Repository\Api\V1\TravelRepository;
 
 class TravelService 
@@ -20,5 +21,10 @@ class TravelService
     public function store(array $travel)
     {
         return $this->travelRepository->store($travel);
+    }
+
+    public function update(Travel $travel, array $newTravel)
+    {
+        return $this->travelRepository->update($travel, $newTravel);
     }
 }
