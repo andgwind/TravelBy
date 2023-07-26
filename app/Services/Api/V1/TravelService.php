@@ -5,7 +5,7 @@ namespace App\Services\Api\V1;
 use App\Models\Travel;
 use App\Repository\Api\V1\TravelRepository;
 
-class TravelService 
+class TravelService
 {
     protected $travelRepository;
 
@@ -14,7 +14,8 @@ class TravelService
         $this->travelRepository = $travelRepository;
     }
 
-    public function getPublicTravelsPaginated($perPage = 15) {
+    public function getPublicTravelsPaginated($perPage = 15)
+    {
         return $this->travelRepository->getPublicTravelsPaginated($perPage);
     }
 

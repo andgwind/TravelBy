@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Travel;
 use App\Http\Requests\V1\StoreTravelRequest;
 use App\Http\Requests\V1\UpdateTravelRequest;
 use App\Http\Resources\V1\TravelCollection;
 use App\Http\Resources\V1\TravelResource;
+use App\Models\Travel;
 use App\Services\Api\V1\TravelService;
 
 class TravelController extends Controller
@@ -45,7 +45,7 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
-        
+
     }
 
     /**

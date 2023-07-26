@@ -2,9 +2,10 @@
 
 namespace App\Sort;
 
-abstract class SortOrderBy {
-    
-    protected array $filters  = [];
+abstract class SortOrderBy
+{
+    protected array $filters = [];
+
     protected array $SortQuery = [];
 
     protected $SortFieldParams = [];
@@ -12,5 +13,4 @@ abstract class SortOrderBy {
     abstract protected function setColumnsQuery();
 
     abstract public function getColumnsQuery();
-
 }

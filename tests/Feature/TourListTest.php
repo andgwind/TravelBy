@@ -5,20 +5,19 @@ namespace Tests\Feature;
 use App\Models\Tour;
 use App\Models\Travel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TourListTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
      * A basic feature test example.
      */
     public function test_tours_list_by_travel_slug_returns_tours(): void
     {
-        $travel = Travel::factory()->create(["is_public" => true]);
+        $travel = Travel::factory()->create(['is_public' => true]);
         $tour = Tour::factory()->create(['travel_id' => $travel->id]);
-
 
         $response = $this->get('/api/v1/travels/'.$travel->slug.'/tours');
 
@@ -44,9 +43,8 @@ class TourListTest extends TestCase
 
     public function test_tours_list_returns_pagination(): void
     {
-        $travel = Travel::factory()->create(["is_public" => true],);
+        $travel = Travel::factory()->create(['is_public' => true]);
         $tour = Tour::factory(16)->create(['travel_id' => $travel->id]);
-
 
         $response = $this->get('/api/v1/travels/'.$travel->slug.'/tours');
 

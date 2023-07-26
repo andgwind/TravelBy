@@ -31,7 +31,7 @@ class IndexTourRequest extends FormRequest
                 'required_with:sortOrder',
                 Rule::in(['price']),
             ],
-            'sortOrder' =>[
+            'sortOrder' => [
                 'required_with:sortBy',
                 Rule::in(['asc', 'desc']),
             ],

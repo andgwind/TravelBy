@@ -25,7 +25,7 @@ class UpdateTravelRequest extends FormRequest
             'isPublic' => 'required|boolean',
             'name' => 'required|string|unique:travels',
             'description' => 'string',
-            'numberOfDays' => 'integer'
+            'numberOfDays' => 'integer',
         ];
     }
 
@@ -33,7 +33,7 @@ class UpdateTravelRequest extends FormRequest
     {
         $this->merge([
             'is_public' => $this->isPublic,
-            'number_of_days' => $this->numberOfDays
+            'number_of_days' => $this->numberOfDays,
         ]);
     }
 }

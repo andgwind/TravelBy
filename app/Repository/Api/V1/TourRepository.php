@@ -9,11 +9,11 @@ use App\Models\Travel;
 class TourRepository
 {
     public function getTourByTravelSlug(
-        string $travelId, 
-        array $filters, 
-        int $perPage) 
+        string $travelId,
+        array $filters,
+        int $perPage)
     {
-        
+
         $columnsQuery = (new TourFilter($filters))->getColumnsQuery();
         $query = Tour::where('travel_id', $travelId)
             ->where($columnsQuery)
@@ -28,9 +28,9 @@ class TourRepository
 
     public function store(array $tourData, Travel $travel)
     {
-        
+
         $tour = $travel->tours()->create($tourData);
+
         return $tour;
     }
-
 }

@@ -21,19 +21,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::controller(TravelController::class)->prefix('v1')->group(function() {
+Route::controller(TravelController::class)->prefix('v1')->group(function () {
     Route::get('/travels', 'index');
     Route::middleware(['auth:sanctum', 'role:admin'])->post('/travels', 'store');
     Route::middleware(['auth:sanctum', 'role:editor'])->put('/travels/{travel}', 'update');
 });
 
-Route::controller(TourController::class)->prefix('v1')->group(function() {
+Route::controller(TourController::class)->prefix('v1')->group(function () {
     Route::get('/travels/{travel:slug}/tours', 'index');
     Route::middleware(['auth:sanctum', 'role:admin'])->post('/travels/{travel}/tours', 'store');
 });
 
-Route::controller(AuthController::class)->prefix('v1')->group(function() {
+Route::controller(AuthController::class)->prefix('v1')->group(function () {
     Route::post('/register', 'register');
     Route::post('/login', 'login');
 });

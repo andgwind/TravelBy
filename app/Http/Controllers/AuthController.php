@@ -6,7 +6,6 @@ use App\Http\Requests\V1\LoginAuthRequest;
 use App\Http\Requests\V1\RegisterAuthRequest;
 use App\Http\Resources\V1\UserResource;
 use App\Services\Api\V1\AuthService;
-use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -17,7 +16,7 @@ class AuthController extends Controller
         $this->authService = $authService;
     }
 
-    public function register(RegisterAuthRequest $request) 
+    public function register(RegisterAuthRequest $request)
     {
         $user = $this->authService->register($request->all());
 
@@ -31,8 +30,8 @@ class AuthController extends Controller
         return response()->json([
             'token' => $userData['token'],
 
-            'user' => new UserResource($userData['user'])
-            ]
+            'user' => new UserResource($userData['user']),
+        ]
         );
     }
 }

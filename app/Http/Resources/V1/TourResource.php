@@ -16,10 +16,10 @@ class TourResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name'=> $this->name,
+            'name' => $this->name,
             'startingDate' => $this->starting_date,
             'endingDate' => $this->ending_date,
-            'price' => number_format($this->price, 2), 
+            'price' => number_format($this->price, 2),
         ];
     }
 }

@@ -33,27 +33,26 @@ class UserCreateCommand extends Command
         $user['email'] = $this->ask('What is user email?');
         $user['password'] = $this->secret('What is user password?');
 
-
         $validator = Validator::make($user, [
             'name' => ['required', 'max:255'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:8'],
         ]);
-    
+
         if ($validator->fails()) {
             $this->error($validator->errors()->first());
+
             return;
         }
-
 
         $roles = Role::pluck('name')->toArray();
         $roleName = $this->choice('Role of the new user', $roles, 1);
 
-        DB::transaction(function() use ($user, $roleName) {
+        DB::transaction(function () use ($user, $roleName) {
             $newUser = User::create($user);
             $newUser->assignRole($roleName);
         });
-       
-        $this->info('User' .$user['email']. 'created successfully');
+
+        $this->info('User'.$user['email'].'created successfully');
     }
 }

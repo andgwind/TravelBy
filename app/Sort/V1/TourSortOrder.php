@@ -4,9 +4,10 @@ namespace App\Sort\V1;
 
 use App\Sort\SortOrderBy;
 
-class TourSortOrder extends SortOrderBy  {
-    
+class TourSortOrder extends SortOrderBy
+{
     protected array $filters = [];
+
     protected array $SortQuery = [];
 
     public function __construct($filters)
@@ -15,20 +16,20 @@ class TourSortOrder extends SortOrderBy  {
     }
 
     protected $SortFieldParams = [
-        'sortBy' => ['price']
+        'sortBy' => ['price'],
     ];
 
     protected function setColumnsQuery()
     {
         foreach ($this->filters as $filter => $field) {
             ////
-        }   
+        }
     }
 
     public function getColumnsQuery(): array
     {
         $this->setColumnsQuery();
+
         return $this->SortQuery;
     }
-
 }
