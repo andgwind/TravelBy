@@ -2,12 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Http\Resources\V1\TravelResource;
 use App\Models\Travel;
-use App\Services\Api\V1\TravelService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Mockery;
 use Tests\TestCase;
 
 class TravelsListTest extends TestCase
@@ -17,7 +13,7 @@ class TravelsListTest extends TestCase
     public function test_travels_list_returns_paginated_data(): void
     {
         Travel::factory(16)->create(['is_public' => true]);
-        
+
         $response = $this->get('/api/v1/travels');
 
         $response->assertStatus(200);

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedInteger('number_of_days');
             $table->timestamps();
-            
+
         });
     }
 

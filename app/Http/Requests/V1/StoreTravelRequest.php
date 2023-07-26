@@ -25,15 +25,15 @@ class StoreTravelRequest extends FormRequest
             'isPublic' => 'boolean',
             'name' => 'required|unique:travels',
             'description' => 'required',
-            'numberOfDays' => 'required|integer'
+            'numberOfDays' => 'required|integer',
         ];
     }
 
-    protected function prepareForValidation() 
+    protected function prepareForValidation()
     {
         $this->merge([
             'is_public' => $this->isPublic,
-            'number_of_days' => $this->numberOfDays
+            'number_of_days' => $this->numberOfDays,
         ]);
     }
 }

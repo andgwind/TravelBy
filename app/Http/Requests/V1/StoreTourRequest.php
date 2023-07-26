@@ -25,7 +25,7 @@ class StoreTourRequest extends FormRequest
             'name' => ['required', 'string', 'max:250'],
             'startingDate' => ['required', 'date'],
             'endingDate' => ['required', 'date'],
-            'price' => ['required', 'numeric']
+            'price' => ['required', 'numeric'],
         ];
     }
 

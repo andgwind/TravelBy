@@ -4,14 +4,14 @@ namespace App\Repository\Api\V1;
 
 use App\Models\Travel;
 
-class TravelRepository 
+class TravelRepository
 {
-    public function getPublicTravelsPaginated($perPage = 15) 
+    public function getPublicTravelsPaginated($perPage = 15)
     {
         return Travel::where('is_public', true)->paginate($perPage);
     }
 
-    public function store(array $travel) 
+    public function store(array $travel)
     {
         return Travel::create($travel);
     }
@@ -19,6 +19,7 @@ class TravelRepository
     public function update(Travel $travel, array $newTravel)
     {
         $travel->update($newTravel);
+
         return $travel;
     }
 }

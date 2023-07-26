@@ -7,7 +7,6 @@ use App\Models\Travel;
 use App\Models\User;
 use Database\Seeders\RoleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AdminTravelTest extends TestCase
@@ -15,16 +14,15 @@ class AdminTravelTest extends TestCase
     /**
      * A basic feature test example.
      */
-
     use RefreshDatabase;
 
     public function test_public_user_cannot_access_adding_travel(): void
     {
         $response = $this->postJson('/api/v1/travels', [
-            "isPublic" => "1",
-            "name" => "welcome to the japan big trave2",
-            "description" => "the big travel to japan. The best travel in the world",
-            "numberOfDays" => "10"
+            'isPublic' => '1',
+            'name' => 'welcome to the japan big trave2',
+            'description' => 'the big travel to japan. The best travel in the world',
+            'numberOfDays' => '10',
         ]);
 
         $response->assertStatus(401);
@@ -38,10 +36,10 @@ class AdminTravelTest extends TestCase
         $user->roles()->attach(Role::where('name', 'admin')->value('id'));
 
         $response = $this->actingAs($user)->postJson('/api/v1/travels', [
-            "isPublic" => "1",
-            "name" => "welcome to the japan big trave2",
-            "description" => "the big travel to japan. The best travel in the world",
-            "numberOfDays" => "10"
+            'isPublic' => '1',
+            'name' => 'welcome to the japan big trave2',
+            'description' => 'the big travel to japan. The best travel in the world',
+            'numberOfDays' => '10',
         ]);
 
         $response->assertStatus(201);
@@ -55,14 +53,14 @@ class AdminTravelTest extends TestCase
         $travel = Travel::factory()->create();
 
         $response = $this->actingAs($user)->putJson('/api/v1/travels/'.$travel->id, [
-            "isPublic" => "1",
-            "name" => "welcome to the japan big trave update",
-            "description" => "the big travel to japan. The best travel in the world",
-            "numberOfDays" => "10"
+            'isPublic' => '1',
+            'name' => 'welcome to the japan big trave update',
+            'description' => 'the big travel to japan. The best travel in the world',
+            'numberOfDays' => '10',
         ]);
 
         $response->assertStatus(200);
         $response = $this->get('/api/v1/travels');
-        $response->assertJsonFragment(['name' => "welcome to the japan big trave update"]);
+        $response->assertJsonFragment(['name' => 'welcome to the japan big trave update']);
     }
 }
